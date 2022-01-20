@@ -1,6 +1,6 @@
-# taxi management
+# Taxi Management System
 
-an desktop application that maintans data on taxis and on its drivers!
+a desktop application that maintans data on taxis and on its drivers!
 
 
 
