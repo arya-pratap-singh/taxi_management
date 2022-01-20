@@ -1,0 +1,104 @@
+create database taxi_booking;
+
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'pass';
+GRANT ALL PRIVILEGES ON taxi_booking.* TO 'user'@'localhost';
+
+use taxi_booking;
+
+create table pickup(S_No integer(10) primary key auto_increment,
+State varchar(20),
+city varchar(20),
+Region varchar(20),
+Distance integer(5)
+);
+insert into pickup(State,City,Region,Distance) values("UP","Hapur","Gaul Market",30);
+insert into pickup(State,City,Region,Distance) values("Delhi","New Delhi","PatelNagar",38);
+insert into pickup(State,City,Region,Distance) values("Delhi","Old Delhi","Chandni Chawlk",42);
+insert into pickup(State,City,Region,Distance) values("UP","Noida","Sector 14",43);
+insert into pickup(State,City,Region,Distance) values("UP","Hapur","Aryasamaj Mandir",21);
+insert into pickup(State,City,Region,Distance) values("Delhi","New Delhi","Karol Bagh",35);
+insert into pickup(State,City,Region,Distance) values("UP","Meerut","Shastri Nagar",50);
+insert into pickup(State,City,Region,Distance) values("Delhi","New Delhi","Rajori Garden",37);
+insert into pickup(State,City,Region,Distance) values("UP","Ghaziabad","Meerut Road",5);
+insert into pickup(State,City,Region,Distance) values("UP","Ghaziabad","Kavi Nagar",20);
+
+create table drivers(SNo integer(10) auto_increment primary key,
+Name varchar(25),
+Drivers_Id varchar(20) not null,
+Address varchar(50)not null, 
+contact_no varchar(10),
+Taxi_id int(10) ,
+foreign key(taxi_id) references taxi(taxi_id) on delete set null on update cascade);
+
+
+
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Ram Kapoor","45f","New Sagarpur,Delhi",9879834783,1001);
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Arpit Chaudhary","49d","Shamshed Nagar,Hapur",9879784783,"1002");
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Armeet Kaur","78h","Moholla Mandi,Firozabad",9879658783,"1003");
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Raghav Singhal","56y","Janakpur,New Delhi",8709834673,"1004");
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Deshpande Singh","98j","Kavinagar,Ghaziabad",7642908735,"1005");
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Lakshman Das","67h","Gali no 6,Masuri,UP",9989734783,"1006");
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Yugdeep Saini","43g","Gaul Market,Hapur",9874326632,"1007");
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Suresh Singhal","13r","Laxmi Nagar,Delhi",6779834883,"1008");
+insert into drivers(name,drivers_id,address,contact_no,taxi_id) values("Rahul Saini","57h","Sector 2,Moti Nagar,New Delhi",8753458927,"1009");
+
+
+create table taxi(Taxi_id integer(10) primary key auto_increment,
+model varchar(50),
+Taxi_number varchar(25) ,
+seating_capacity integer(5)
+);
+
+alter table taxi auto_increment=1001;
+
+insert into taxi(model,taxi_number,seating_capacity) values("Toyota Innova Crysta","DL 14 AD 4778",8);
+insert into taxi(model,taxi_number,seating_capacity) values("Renault Lodgy","DL 14 CD 9078",7);
+insert into taxi(model,taxi_number,seating_capacity) values("Honda BR-V","DL 14 9898 CK ",8);
+insert into taxi(model,taxi_number,seating_capacity) values("Mahindra XUV500","DL 17 DD 7553",10);
+insert into taxi(model,taxi_number,seating_capacity) values("Maruti Suzuki Ertiga","HR 12 BA 8764",10);
+insert into taxi(model,taxi_number,seating_capacity) values("Tata Harrier","HR 10 BH 1453",5);
+insert into taxi(model,taxi_number,seating_capacity) values("Maruti Baleno","UP 12 AZ 0178",5);
+insert into taxi(model,taxi_number,seating_capacity) values("Renault Lodgy","UP 14 DA 6573",7);
+insert into taxi(model,taxi_number,seating_capacity) values("Maruti Wagon","UP 17 BC 0763",5);
+insert into taxi(model,taxi_number,seating_capacity) values("Hyundai Elite","UP BL 17 4835",5);
+insert into taxi(model,taxi_number,seating_capacity) values("audi A4","UP 14 DH 8055",5);
+
+create table prizes(
+S_no integer(10) primary key auto_increment,
+Prize integer(5),
+capacity integer(3)
+);
+
+insert into prizes(prize,capacity) values (14,8);
+insert into prizes(prize,capacity) values (11,7);
+insert into prizes(prize,capacity) values (17,10);
+insert into prizes(prize,capacity) values (8,5);
+
+
+create table bookings(
+S_no integer(10) primary key auto_increment,
+user_name varchar(50),
+location varchar(50),
+capacity integer(3),
+Driver varchar(50),
+prize integer(5)
+);
+
+Create table Complain(
+S_no integer(10) primary key auto_increment,
+user_name varchar(50),
+user_Complain varchar(255)
+);
+
+create table user_cred(
+sno integer(5) primary key auto_increment,
+user_name varchar(50),
+user_password varchar(50),
+user_number varchar(50)
+);
+
+insert into user_cred(user_name,user_password,user_number) values('arya','123456','8826920660');
+
+insert into user_cred(user_name,user_password,user_number) values('leo','1999love','7546896659');
+
+
